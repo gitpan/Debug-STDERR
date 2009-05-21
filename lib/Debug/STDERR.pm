@@ -8,7 +8,7 @@ use Time::HiRes qw(gettimeofday);
 use POSIX qw(strftime);
 use Exporter 'import';
 
-our $VERSION = '0.00001';
+our $VERSION = '0.00002';
 our @EXPORT = qw(debug);
 
 if (DEBUG_FLAG) {
@@ -31,7 +31,6 @@ if (DEBUG_FLAG) {
         print STDERR "  FROM    : $package of $filename line $line\n";
 
         # output message
-        $message ||= delete $hashref->{message};
         print STDERR "  MESSAGE : ", $message, "\n";
         if ( ref($hashref) eq "HASH" ) {
             print STDERR "  DUMPER  :\n";
@@ -75,7 +74,6 @@ Debug::STDERR - provide debug() method and redirect STDERR.
   use Debug::STDERR;
 
   debug( "foo" => { bar => "baz" });
-  debug( { message => "foo", bar => "baz"} );
 
 
 =head1 DESCRIPTION
